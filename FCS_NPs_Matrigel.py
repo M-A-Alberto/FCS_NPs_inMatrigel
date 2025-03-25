@@ -34,13 +34,27 @@ sns.set_palette("bright")
 
 
 def diffusion(tau,g0,td):
-    
+    """
+    Free diffusion model
+
+    tau: Lag time (numpy.ndarray)
+    g0: Correlation amplitude (float)
+    td: Diffusion time [s] (float)
+    """
 
     y = g0/((1+(tau/td))*(1+(w**2/z0**2)*(tau/td))**(1/2))
     
     return y
 
 def anomalous_D(tau,g0,td,a,):
+    """
+    Anomalous diffusion model
+
+    tau: Lag time (numpy.ndarray)
+    g0: Correlation amplitude (float)
+    td: Diffusion time [s] (float)
+    a: Diffusion exponent (float)
+    """
     
     y = g0/((1+(tau/td)**a)*(1+(w**2/z0**2)*(tau/td)**a)**(1/2))
     
@@ -48,8 +62,6 @@ def anomalous_D(tau,g0,td,a,):
     
 
 kb = 1.38e-23
-
-
 T = 273.15+36
 
 #Calibrations for every repetition
